@@ -1,5 +1,6 @@
 package itheima;
 
+import java.sql.SQLOutput;
 import java.util.Arrays;
 /**
  * 方法：私有field , 传递可变参数 ， 参数绑定
@@ -105,6 +106,15 @@ class PersonInfo{
 class Student extends PersonInfo {
     private int score;
 
+    // 如果父类有除默认之外的构造方法，子类就必须显式调用super()并给出参数以便让编译器定位到父类的一个合适的构造方法
+    // 所以 -- > 子类不会继承父类的构造方法
+    public Student(){
+        // 类的继承：子类的构造方法第一句必须是调用父类的构造方法
+        super(); // 自动调用父类的构造方法,当父类的构造方法需要变量时：super(name, age);
+
+        // 下面再进行自己的代码流程
+    }
+
     public void setScore(int score){
         this.score = score;
     }
@@ -144,6 +154,18 @@ class Hello{
         }
     }
 
+}
+
+class Book{
+    protected String name;
+
+    public void setName(String name){
+        this.name = name;
+    }
+
+    public String getName(){
+        return this.name;
+    }
 }
 public class Chapter05{
     public static void main(String[] args){
@@ -246,6 +268,60 @@ public class Chapter05{
         st1.setAge(18);
         st1.setScore(100);
         st1.getStudentInfo();
+
+        // 向上转型
+        // 之前我们在new 的时候 : Student st1 = new Student();
+        //                引用类型的变量是 Student ，他可以指向一个 Student类型的实例
+        // 继承树是 Student > PersonInfo > Object
+        // 能否实现 引用类型的变量是 PersonInfo 指向一个Student类型的实例
+        PersonInfo p1 = new Student(); //却访问不到Student类型的实例里面的setScore()方法
+
+        Object o1 = new Student();
+        // 相当于将 Student 类型转化为 PersonInfo 类型或者更高层次的Object
+
+        // 向下转型
+        PersonInfo p2 = new PersonInfo();
+        // 向下转型可能会失败，因为父类包含的方法没有子类多了，总不能凭空变！！！
+        Student stu1 = (Student) p1; // 这个向下转型是可以成功的，因为p1实际指向的就是Student实例
+        stu1.setScore(22); // 转换后就可以访问到此方法
+
+        // 下面这一句会报错，因为p2实际指向的是 PersonInfo对象,报 ClassCastException。
+        // Student stu2 = (Student) p2;
+
+        // 为了避免转型错误，Java虚拟机提供了 instanceof
+        System.out.println(p1 instanceof Student);
+
+        System.out.println(p2 instanceof PersonInfo);
+
+        // 在转型前先做判断
+        if (p2 instanceof Student){
+            Student stu2 = (Student) p2;
+        } else {
+            System.out.println("转型失败：p2 --> Student");
+        }
+
+
+        // 关于继承和组合
+        // 继承的父与子之间必须要有逻辑关系，例如 Student的父类是Person,
+        // 假如有个 Book类，虽然Student继承他不会有语法错误，但是会在逻辑上不符
+        // 继承 的两个类之间必须是 is 关系，组合的两个类之间是 has 关系，这个学生有一本书，
+        Book book = new Book();
+        /*
+        使用组合和继承
+        class Student extends PersonInfo{
+            protected Book book;  // 组合就是持有一个该类的引用类型变量
+            protected int score;
+        }
+        */
+
+
+
+
+
+
+
+
+
 
 
 
