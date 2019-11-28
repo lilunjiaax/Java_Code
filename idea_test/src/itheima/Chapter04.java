@@ -1,7 +1,7 @@
 package itheima;
-
 import java.util.Scanner;
 import java.util.Arrays;
+
 public class Chapter04{
     public static void main(String[] args){
         /**
@@ -39,13 +39,13 @@ public class Chapter04{
         int n = 12345000;
         System.out.printf("n=%d, hex = %08x",n,n);  // 转化为16进制，用0补足8位；
 
-        // 输入
-        // Scanner scanner = new Scanner(System.in);
-        // System.out.print("\ninput your name:");
-        // String name = scanner.nextLine();  //读取一行输入并获取字符串
-        // System.out.print("input your age:");
-        // int age = scanner.nextInt(); //读取一行输入并获取整数, 会自动进行类型转化
-        // System.out.printf("name=%s, age=%d",name, age);
+        // 输入  从命令行接收参数
+         Scanner scanner = new Scanner(System.in);
+         System.out.print("\ninput your name:");
+         String name = scanner.nextLine();  //读取一行输入并获取字符串
+         System.out.print("input your age:");
+         int age = scanner.nextInt(); //读取一行输入并获取整数, 会自动进行类型转化
+         System.out.printf("name=%s, age=%d",name, age);
 
         // 练习
         // System.out.println("");
@@ -72,7 +72,7 @@ public class Chapter04{
         System.out.printf("%s  ---   %s\n", s1, s2);
         System.out.println(s1 == s2);  // 表名引用的对象不是指向同一个对象
 
-        // 要判断引用类型的变量内容是否相等，必须使用equals()方法
+        // 要判断引用类型的变量内容是否相等，必须使用equals()方法,不管对象类型，只判断内容是否相等
         System.out.println(s1.equals(s2));
         // s1.equals(s2)  注意点：当s1为null时，会报 NullPointerException 错误
 
@@ -174,6 +174,7 @@ public class Chapter04{
         }
 
         // Arrays.deepToString()
+        System.out.println("");
         System.out.println(Arrays.deepToString(nss2));
 
 

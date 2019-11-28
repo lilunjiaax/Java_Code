@@ -1,10 +1,24 @@
 package itheima;
 
+class Person_Chapter01{
+    // 包作用域
+    void hello(){
+        System.out.println("Test Package 作用域");
+    }
+}
+
+
 public class Chapter01{
     /*
     整数运算：
     ！！！！！！ 关于非运算符需要重点学习.
      */
+
+    // 包作用域
+    void hello(){
+        System.out.println("Test Package 作用域");
+    }
+
     public static void main(String []args){
         System.out.println("---------");
 
@@ -14,7 +28,8 @@ public class Chapter01{
         System.out.println(x%y);
 
 
-        // 关于int 型和 long 型的问题
+        // 关于int 型和 long 型的问题，
+        // 一旦存储的二进制位数超出范围会出现意料之外的错误
         int x1 = 2147483640;
         int y1 = 15;
         System.out.println(x1+y1);
@@ -28,9 +43,9 @@ public class Chapter01{
         // 移位运算，
         // >> 表示最高位的符号位不会移动
         int n = 7;
+        System.out.println("移位运算");
         System.out.println(n>>1);
         System.out.println(n>>2);
-
         System.out.println(n<<1);
 
         // >>> 最高的符号位也会移动,
@@ -41,6 +56,7 @@ public class Chapter01{
         // 对byte和short类型进行移位时，会首先转换为int再进行位移。
 
         // 位运算
+        System.out.println("位运算");
         // 与运算 同1为1
         System.out.println(1 & 0);
 
@@ -49,7 +65,6 @@ public class Chapter01{
 
         // 非运算
         System.out.println(~0);
-        System.out.println(~1);
         System.out.println(~1);
 
         // 异或运算 两数不同则为1

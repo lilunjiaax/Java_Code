@@ -18,6 +18,7 @@ import java.util.Arrays;
  *
  * */
 
+// 修饰的类不允许被继承
 final class Private_Person {
     // 修饰的类不允许被继承
     protected String name;
@@ -40,7 +41,7 @@ class Teacher extends Person_0602 {
 
     @Override
     public void run() {
-        System.out.println("TeacherRuning");
+        System.out.println("Teacher Runing");
     }
 }
 
@@ -245,7 +246,7 @@ public class Chapter06 {
         Student_06 stu1 = new Student_06();
         Person_06 per1 = (Person_06) stu1;
         per1.run();  // 发现运行却是 Student 里面的run方法
-        // Java的实例方法调用是基于运行时的实际类型的动态调用，而非变量的声明类型 --> 多态
+        // Java的实例方法调用是基于运行时的实际类型的动态调用，而非变量的声明类型 --> 多态(当子类与父类都存在此方法时)
 
         // 利用多态实现简单税种计算
         Income[] incomes = new Income[] { new Income(3600), new Salary(6000), new StateCouncilSpecialAllowance(2000) };

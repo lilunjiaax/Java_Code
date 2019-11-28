@@ -56,6 +56,8 @@ class PersonInfo{
     private int age;
     private String[] names; // 可以用来接收可变参数
 
+    // private 修饰的字段不可以被子类访问到
+    // protected 修饰的字段可以被子类访问到
     protected String name1 = "xyh";
 
     public String getName(){
@@ -89,7 +91,10 @@ class PersonInfo{
     }
 
     public void getNumsName(){
+        System.out.println("------------------------");
+        System.out.println(this.names);
         System.out.println(Arrays.toString(this.names));
+        System.out.println("------------------------");
     }
 
     // private 方法只能内部调用
@@ -135,7 +140,7 @@ class Student extends PersonInfo {
     }
 }
 
-// 方法的重载
+// 方法的重载:方法名相同，参数不同，**一般返回值的类型都是相同的。**
 class Hello{
 
     public void hello(){
@@ -194,13 +199,18 @@ public class Chapter05{
 
         // 传递可变参数
         per2.setNumsName("llj", "xyh");
+        per2.getNumsName();
         per2.setNumsName("hahahahahhh");
+        per2.getNumsName();
         per2.setNumsName();
+        per2.getNumsName();
 
         System.out.println();
         // 参数绑定,基本类型参数的传递 和 引用类型参数的传递
         PersonInfo argbind = new PersonInfo();
         // 分别传递引用类型和基本类型测试
+        // 传递引用类型时，当外部被修改时，函数内部取值也会修改的那个值
+        // 例如：Python中的可变对象和不可变对象
         int n_age = 10;
         String[] n_name = new String[] { "kkp", "haha" };
 
@@ -251,6 +261,7 @@ public class Chapter05{
         System.out.println(per5.getAge());
         System.out.println(per5.getName());
 
+        System.out.println("方法的重载");
         Hello h1 = new Hello();
         h1.hello();
         h1.hello("llj");

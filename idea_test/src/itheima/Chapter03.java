@@ -4,7 +4,7 @@ public class Chapter03{
     public static void main(String []args) {
         /*
         字符和字符串：
-        字符：2个字节，数字和字母都可以
+        字符：2个字节，数字，字母，汉字 都可以
         */
         System.out.println("Chapter03");
 
@@ -36,11 +36,13 @@ public class Chapter03{
 
         // 注意字符串的不可变性，指向会改变
         String tmp = s1;  // tmp指向abc开头的字符串
-        s1 = "hahaha";
+        s1 = "hahaha";  // s1 的新指向
         System.out.println(tmp);
+        System.out.println(s1);
 
         // 空值 null 注意：null 与 "" 不相同
         boolean b1 = null == "";
+        b1 = true;
         System.out.println(b1);
 
 
@@ -48,6 +50,9 @@ public class Chapter03{
         int a = 72;
         int b = 105;
         int c = 65281;
+
+        System.out.println((char)a);  // 强制转换
+        System.out.println('\u0048');
 
         String a1 = Integer.toHexString(a);  // 十进制转化为16进制
 
